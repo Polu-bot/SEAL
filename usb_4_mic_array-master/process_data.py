@@ -4,6 +4,8 @@ import usb.util
 import time
 import numpy as np
 from scipy.io import wavfile
+import csv
+import pandas as pd
 
 def calculate_spl_from_wav(wav_file):
     # Read the WAV file
@@ -38,8 +40,19 @@ if dev:
             break
 
 print(doa)
+doa = np.array(doa)
+doa_value = np.mean(doa)
+print(doa_value)
 
 # Example usage
 wav_file = 'output.wav'
 spl_db = calculate_spl_from_wav(wav_file)
 print("Sound Pressure Level (SPL): {:.2f} dB".format(spl_db))
+
+df = pd.DataFrame({'SPL': [spl_db], 'DOA': doa_value})
+
+# Specify the CSV file path
+csv_file = 'data.csv'
+
+# Save DataFrame to CSV file
+df.to_csv(csv_file, index=False)

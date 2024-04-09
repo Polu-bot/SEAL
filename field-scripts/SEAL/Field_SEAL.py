@@ -21,6 +21,10 @@ import pandas as pd
 import re
 import math
 import time
+import subprocess
+
+recordDataScript = "../scripts/usb_4_mic_array-master/acquire_data.py"
+processDataScript = "../scripts/usb_4_mic_array-master/record_data.py"
 
 PROCESSASD = True
 CORRELATIONCODE = True
@@ -248,6 +252,8 @@ def sample_disp_con(x,x_start,r_disp):
 
 def process_data():
     # this should give us x coordinates, y coordinates, SPL level and angle
+    subprocess.run(["python", recordDataScript])
+    subprocess.run(["sudo python", processDataScript])
 
 # Define Test Space ###################################################################
 x_coordinates = np.arange(grid_length)
