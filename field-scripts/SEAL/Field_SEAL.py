@@ -30,7 +30,7 @@ PROCESSASD = True
 CORRELATIONCODE = True
 MOVEFILES = True
 
-FolderPath = r"C:\Users\shuai\Desktop\ASD_Data\RoSE Lab Project\\"
+FolderPath = "../Output"
 TrialName = "S_SEAL_Trial_1"
 
 grid_length = 11
